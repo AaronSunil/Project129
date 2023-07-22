@@ -1,25 +1,25 @@
 import pandas as pd
+import csv
+import pandas as pd
+
 
 df = pd.read_csv("dwarf_stars.csv")
-df.head()
+print(df.head())
 
-df.columns
-df.dtypes
+print(df.columns)
+print(df.dtypes)
 
 df["Radius"] = 0.102763*df["Radius"]
 
 df['Mass']=df['Mass'].apply(lambda x: x.replace('$', '').replace(',', '')).astype('float')
 df["Mass"] = 0.000954588*df["Mass"]
-df.head()
-df.columns
+print(df.head())
+print(df.columns)
 df.drop(['Unnamed: 0'],axis=1,inplace=True)
-df.head()
+print(df.head())
 df.reset_index(drop=True,inplace=True)
 df.to_csv("unit_converted_stars.csv")
-df.dtypes
-
-import csv
-import pandas as pd
+print(df.dtypes)
 
 file1 = 'bright_stars.csv'
 file2 = 'unit_converted_stars.csv'
@@ -58,4 +58,4 @@ with open("total_stars.csv",'w',encoding='utf8') as f:
     csvwriter.writerows(p_d)
     
 df = pd.read_csv('total_stars.csv')
-df.tail(8)
+print(df.tail(8))
